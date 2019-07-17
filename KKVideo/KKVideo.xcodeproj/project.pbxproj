@@ -8,26 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		D728977322DC4BB500BEF620 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977222DC4BB500BEF620 /* AppDelegate.m */; };
-		D728977622DC4BB500BEF620 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977522DC4BB500BEF620 /* ViewController.m */; };
+		D728977622DC4BB500BEF620 /* SimpleCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */; };
 		D728977922DC4BB500BEF620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D728977722DC4BB500BEF620 /* Main.storyboard */; };
 		D728977B22DC4BB600BEF620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D728977A22DC4BB600BEF620 /* Assets.xcassets */; };
 		D728977E22DC4BB600BEF620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D728977C22DC4BB600BEF620 /* LaunchScreen.storyboard */; };
 		D728978122DC4BB600BEF620 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D728978022DC4BB600BEF620 /* main.m */; };
 		D728978B22DC537B00BEF620 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D728978A22DC537B00BEF620 /* libGPUImage.a */; };
+		D7D1A85322DD7404009DD577 /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D1A85222DD7404009DD577 /* DemoListViewController.m */; };
+		D7D1A85522DDBA0A009DD577 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D7D1A85422DDBA0A009DD577 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D728976E22DC4BB500BEF620 /* KKVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D728977122DC4BB500BEF620 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D728977222DC4BB500BEF620 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D728977422DC4BB500BEF620 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D728977522DC4BB500BEF620 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D728977422DC4BB500BEF620 /* SimpleCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleCameraViewController.h; sourceTree = "<group>"; };
+		D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleCameraViewController.m; sourceTree = "<group>"; };
 		D728977822DC4BB500BEF620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D728977A22DC4BB600BEF620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D728977D22DC4BB600BEF620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D728977F22DC4BB600BEF620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D728978022DC4BB600BEF620 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D728978A22DC537B00BEF620 /* libGPUImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGPUImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7D1A85122DD7404009DD577 /* DemoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
+		D7D1A85222DD7404009DD577 /* DemoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoListViewController.m; sourceTree = "<group>"; };
+		D7D1A85422DDBA0A009DD577 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		D7D1A85622DDBA28009DD577 /* GPUImage源码解读.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "GPUImage源码解读.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +68,15 @@
 		D728977022DC4BB500BEF620 /* KKVideo */ = {
 			isa = PBXGroup;
 			children = (
+				D7D1A85422DDBA0A009DD577 /* README.md */,
+				D7D1A85622DDBA28009DD577 /* GPUImage源码解读.md */,
+				D7D1A85022DD73A2009DD577 /* filter */,
 				D728977122DC4BB500BEF620 /* AppDelegate.h */,
 				D728977222DC4BB500BEF620 /* AppDelegate.m */,
-				D728977422DC4BB500BEF620 /* ViewController.h */,
-				D728977522DC4BB500BEF620 /* ViewController.m */,
+				D7D1A85122DD7404009DD577 /* DemoListViewController.h */,
+				D7D1A85222DD7404009DD577 /* DemoListViewController.m */,
+				D728977422DC4BB500BEF620 /* SimpleCameraViewController.h */,
+				D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */,
 				D728977722DC4BB500BEF620 /* Main.storyboard */,
 				D728977A22DC4BB600BEF620 /* Assets.xcassets */,
 				D728977C22DC4BB600BEF620 /* LaunchScreen.storyboard */,
@@ -81,6 +92,13 @@
 				D728978A22DC537B00BEF620 /* libGPUImage.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7D1A85022DD73A2009DD577 /* filter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = filter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +160,7 @@
 			files = (
 				D728977E22DC4BB600BEF620 /* LaunchScreen.storyboard in Resources */,
 				D728977B22DC4BB600BEF620 /* Assets.xcassets in Resources */,
+				D7D1A85522DDBA0A009DD577 /* README.md in Resources */,
 				D728977922DC4BB500BEF620 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,9 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D728977622DC4BB500BEF620 /* ViewController.m in Sources */,
+				D728977622DC4BB500BEF620 /* SimpleCameraViewController.m in Sources */,
 				D728978122DC4BB600BEF620 /* main.m in Sources */,
 				D728977322DC4BB500BEF620 /* AppDelegate.m in Sources */,
+				D7D1A85322DD7404009DD577 /* DemoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +252,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -285,7 +305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
