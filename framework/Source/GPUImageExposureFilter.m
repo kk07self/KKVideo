@@ -62,5 +62,10 @@ NSString *const kGPUImageExposureFragmentShaderString = SHADER_STRING
     [self setFloat:_exposure forUniform:exposureUniform program:filterProgram];
 }
 
+- (void)renderToTextureWithVertices:(const GLfloat *)vertices textureCoordinates:(const GLfloat *)textureCoordinates {
+    [super renderToTextureWithVertices:vertices textureCoordinates:textureCoordinates];
+    NSLog(@"%@--------",firstInputFramebuffer);
+}
+
 @end
 

@@ -69,27 +69,27 @@
     _filterView = [[GPUImageView alloc] initWithFrame:self.view.frame];
     [self.view insertSubview:_filterView atIndex:0];
     
-    NSString *path = [NSString stringWithFormat:@"%@/test001.mp4",[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
-    _writer = [[GPUImageMovieWriter alloc] initWithMovieURL:[NSURL fileURLWithPath:path] size:self.view.bounds.size fileType:AVFileTypeMPEG4 outputSettings:nil];
-    _writer.assetWriter.movieFragmentInterval = kCMTimeInvalid;
-    [_camera addTarget:_writer];
+//    NSString *path = [NSString stringWithFormat:@"%@/test001.mp4",[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
+//    _writer = [[GPUImageMovieWriter alloc] initWithMovieURL:[NSURL fileURLWithPath:path] size:self.view.bounds.size fileType:AVFileTypeMPEG4 outputSettings:nil];
+//    _writer.assetWriter.movieFragmentInterval = kCMTimeInvalid;
+//    [_camera addTarget:_writer];
     // 添加预览视图
     [_camera addTarget:_filterView];
     [_camera startCameraCapture];
     
     // 添加滤镜
-//    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
+    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
 //    bright.brightness = 0.5;
 //    [_camera addTarget:bright];
 //
 //    // 黑白
-//    GPUImageGrayscaleFilter *exposure = [[GPUImageGrayscaleFilter alloc] init];
+    GPUImageGrayscaleFilter *exposure = [[GPUImageGrayscaleFilter alloc] init];
 //    [bright addTarget:exposure];
 //    [exposure addTarget:_filterView];
     
-//    _pipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:nil input:_camera output:_filterView];
-//    [_pipeline addFilter:bright];
-//    [_pipeline addFilter:exposure];
+    _pipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:nil input:_camera output:_filterView];
+    [_pipeline addFilter:bright];
+    [_pipeline addFilter:exposure];
 }
 
 - (void)back {

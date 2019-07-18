@@ -62,5 +62,11 @@ NSString *const kGPUImageBrightnessFragmentShaderString = SHADER_STRING
     [self setFloat:_brightness forUniform:brightnessUniform program:filterProgram];
 }
 
+
+- (void)renderToTextureWithVertices:(const GLfloat *)vertices textureCoordinates:(const GLfloat *)textureCoordinates {
+    [super renderToTextureWithVertices:vertices textureCoordinates:textureCoordinates];
+    NSLog(@"%@--------",firstInputFramebuffer);
+}
+
 @end
 
