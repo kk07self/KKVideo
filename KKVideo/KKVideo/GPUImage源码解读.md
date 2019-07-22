@@ -461,6 +461,93 @@ for (id<GPUImageInput> currentTarget in targets)
 
 #### 视频：GPUImageMovie
 
+`GPUImageMovie`是一个视频读取类，初始化时传入视频资源，即可抛出类似`GPUImageVideoCamera`一样一系列的图像帧，其内部出了图像资源的获取外，其他的逻辑（图像->FBO，FBO->传递target）和`GPUImageVideoCamera`几乎完全一样。
+
+- 获取图像资源
+
+  - 初始化传递视频资源
+
+  ```objective-c
+  - (id)initWithAsset:(AVAsset *)asset;
+  - (id)initWithPlayerItem:(AVPlayerItem *)playerItem;
+  - (id)initWithURL:(NSURL *)url;
+  ```
+
+  三个初始化方法，分别接受不一样的视频资源，然后将其保存到`GPUImageMovie`对象中，留有后面使用。
+
+  - 视频资源读取->图像资源
+
+  针对上一步`GPUImageMovie`初始化时传进来的视频资源，`GPUImageMovie`其解析出来的图像资源的过程也是不一样的。
+
+  **AVPlayerItem**作为资源时：
+
+  `GPUImageMovie`通过`AVPlayerItemOut`来进行解析：
+
+  首先，在`- (void)processPlayerItem`方法中，配置`AVPlayerItemOutput`并添加定时器`displayLink`具体请看`- (void)processPlayerItem`这个方法；
+
+  然后，在`displayLink`定时器的回调中配置要读取的图像帧的时间，在`- (void)displayLinkCallback:(CADisplayLink *)sender`回调方法中实现；
+
+  最后，通过定时器配置的时间，从`AVPlayerItemOutput`中读取对应时间的图像帧，具体实现在`- (void)processPixelBufferAtTime:(CMTime)outputItemTime`方法中，最终拿到图像帧资源：
+
+  ```objective-c
+  CVPixelBufferRef pixelBuffer = [playerItemOutput copyPixelBufferForItemTime:outputItemTime itemTimeForDisplay:NULL];
+  ```
+
+  
+
+  **AVAsset或NSURL**作为资源是：
+
+  `GPUIMageMovie`通过`AVAssetReader`来进行解析：
+
+  首先，在`- (void)processAsset`方法中，创建`AVAssetReader`对象，并配置其参数信息
+
+  然后，再在创建`AVAssetReader`后，通过`while`循环用`AVAssetReader`读取图像帧数据，可参看`- (void)processAsset`中的`while`循环体，及其在循环体中调用的这个方法的实现
+
+  `- (BOOL)readNextVideoFrameFromOutput:(AVAssetReaderOutput *)readerVideoTrackOutput`
+
+  
+
+  以上，拿到了图像帧数据，下面就是转FBO了。
+
+  
+
+- 图像资源转FBO
+
+上一步拿到的每一帧的图像资源，都会进入到这个方法：
+
+```objective-c
+- (void)processMovieFrame:(CVPixelBufferRef)movieFrame withSampleTime:(CMTime)currentSampleTime;
+```
+
+这个方法中会通过Opengl将图像帧数据转成`FBO`，这一套的逻辑和`GPUImageVideoCamera`中的一模一样。
+
+- 图像资源传递/处理
+
+同`GPUImageVideoCamera`一样，在将图像转成`FBO`后，将`FBO`传递给自己的`targets`：
+
+```objective-c
+for (id<GPUImageInput> currentTarget in targets)
+{
+    NSInteger indexOfObject = [targets indexOfObject:currentTarget];
+    NSInteger targetTextureIndex = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
+    [currentTarget setInputSize:CGSizeMake(bufferWidth, bufferHeight) atIndex:targetTextureIndex];
+    [currentTarget setInputFramebuffer:outputFramebuffer atIndex:targetTextureIndex];
+}
+
+[outputFramebuffer unlock];
+
+for (id<GPUImageInput> currentTarget in targets)
+{
+    NSInteger indexOfObject = [targets indexOfObject:currentTarget];
+    NSInteger targetTextureIndex = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
+    [currentTarget newFrameReadyAtTime:currentSampleTime atIndex:targetTextureIndex];
+}
+```
+
+
+
+以上，基本上就将`GPUImageMovie`解读完了。其实，在`GPUImageMovie`中，很好的封装了从视频中读出一帧一帧的图像资源，如果后期有这方面的需求，建议可以参考此类，可以方便很多。
+
 
 
 #### OpenGL纹理：GPUImageTextureInput、二进制数据：GPUImageRawDataInput、视图：GPUImageUIElement
@@ -478,10 +565,6 @@ for (id<GPUImageInput> currentTarget in targets)
 - GPUImageUIElement
 
 这个传入的是视图控件，相对于`GPUImageRawDataInput`多了一步将自己的`layer`转换成二进制图文数据，后面的步骤就和`GPUImageRawDataInput`一样了。
-
-#### 
-
-
 
 #### 
 
