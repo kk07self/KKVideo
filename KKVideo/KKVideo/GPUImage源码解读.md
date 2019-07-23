@@ -571,10 +571,76 @@ for (id<GPUImageInput> currentTarget in targets)
 
 ### 滤镜
 #### 滤镜工作原理
+
+- 滤镜处理的流程
+
+图像———》纹理（texture）、FBO（绑定了texture的帧缓存对象）———》着色器渲染———》新的纹理(texture）、FBO———>图像
+
+第一步的图像转纹理和最后一步的纹理转图像，前面已经进行过阐述，那么这里会重点阐述纹理渲染的过程。
+
+- 纹理渲染
+
+纹理渲染，实际上是通过`着色器`对纹理进行渲染。这里会涉及到两个`着色器`，分别是`顶点着色器-Vertex Shader`和`片段着色器-Fragment Shader`。
+
+**顶点着色器**
+
+```objective-c
+NSString *const kGPUImageVertexShaderString = SHADER_STRING
+(
+ attribute vec4 position; // 接收顶点坐标
+ attribute vec4 inputTextureCoordinate; // 接收纹理坐标
+ 
+ varying vec2 textureCoordinate; // 向外传递纹理坐标
+ 
+ void main()
+ {
+     gl_Position = position; // 顶点坐标给到gl
+     textureCoordinate = inputTextureCoordinate.xy; // 纹理坐标复制
+ }
+ );
+```
+
+`顶点着色器`主要工作是接收`顶点坐标`和`纹理坐标`，并将`纹理坐标`传递给`片段着色器`
+
+**片段着色器**
+
+```objective-c
+NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
+(
+ varying highp vec2 textureCoordinate; // 接收的纹理坐标
+ 
+ uniform sampler2D inputImageTexture; // 接收的图像纹理
+ 
+ void main()
+ {
+     gl_FragColor = texture2D(inputImageTexture, textureCoordinate); // 纹理绘制
+ }
+);
+```
+
+`片段着色器`主要工作是拿到`纹理坐标`和`纹理`告诉系统如何绘制，上面的示例是最简单的，没有进行任何算法的处理。
+
+**使用着色器**
+
+这一系列的知识涉及到的`opengl`的很多知识，这里就不铺开阐述了，如果感兴趣可以查看我的另一系列的文章[LearnOpengl](https://github.com/kk07self/LearnOpenGL)
+
+
+
 #### 滤镜基类
+
+
+
 #### 内置滤镜
+
+
+
 #### 滤镜链
+
+
+
 #### 自定义滤镜
+
+
 
 
 ### 资源输出
@@ -582,6 +648,8 @@ for (id<GPUImageInput> currentTarget in targets)
 #### 视频文件：GPUImageMovieWriter
 #### GPU纹理：GPUImageTextureOutput
 #### 二进制数据：GPUImageRawDataOutput
+
+
 
 
 ### 其他

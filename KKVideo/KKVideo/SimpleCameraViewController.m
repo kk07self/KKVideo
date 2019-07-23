@@ -9,7 +9,7 @@
 #import "SimpleCameraViewController.h"
 #import "GPUImage.h"
 
-@interface SimpleCameraViewController ()
+@interface SimpleCameraViewController ()<GPUImageVideoCameraDelegate>
 
 /**
  相机
@@ -61,6 +61,7 @@
     [self.view addSubview:_back];
     [_back addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     
+    
     _camera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionFront];
     _camera.outputImageOrientation = UIInterfaceOrientationPortrait;
     _camera.horizontallyMirrorFrontFacingCamera = YES;
@@ -75,27 +76,43 @@
 //    [_camera addTarget:_writer];
     // 添加预览视图
     [_camera addTarget:_filterView];
+    _camera.delegate = self;
+    start = CACurrentMediaTime() * 1000;
+    NSLog(@"startTime--------: %f", start);
     [_camera startCameraCapture];
     
     // 添加滤镜
-    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
-//    bright.brightness = 0.5;
-//    [_camera addTarget:bright];
+//    GPUImageBrightnessFilter *bright = [[GPUImageBrightnessFilter alloc] init];
+////    bright.brightness = 0.5;
+////    [_camera addTarget:bright];
+////
+////    // 黑白
+//    GPUImageGrayscaleFilter *exposure = [[GPUImageGrayscaleFilter alloc] init];
+////    [bright addTarget:exposure];
+////    [exposure addTarget:_filterView];
 //
-//    // 黑白
-    GPUImageGrayscaleFilter *exposure = [[GPUImageGrayscaleFilter alloc] init];
-//    [bright addTarget:exposure];
-//    [exposure addTarget:_filterView];
-    
-    _pipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:nil input:_camera output:_filterView];
-    [_pipeline addFilter:bright];
-    [_pipeline addFilter:exposure];
+//    _pipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:nil input:_camera output:_filterView];
+//    [_pipeline addFilter:bright];
+//    [_pipeline addFilter:exposure];
+}
+
+static double start = 0;
+- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer {
+    double mediaTime = CACurrentMediaTime();
+    NSLog(@"endTime--------: %f", mediaTime * 1000 - start);
+    NSLog(@"-------\n-------\n------\n");
 }
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)dealloc {
+    if (self.camera) {
+        [self.camera stopCameraCapture];
+        _camera = nil;
+    }
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
