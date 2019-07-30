@@ -756,8 +756,6 @@ runSynchronouslyOnVideoProcessingQueue(^{
   
   // 开始纹理渲染
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-  
-  
   [firstInputFramebuffer unlock];
     
     if (usingNextFrameForImageCapture)
@@ -771,9 +769,15 @@ runSynchronouslyOnVideoProcessingQueue(^{
 
 1 着色器(顶点、片段)创建着色器程序，读出着色器中接收信息（顶点坐标、纹理坐标、纹理）的参数
 
-2 激活着色器程序
+2 激活着色器程序，即使用程序
 
-3 绑定FBO到 
+3 绑定FBO到 ，即
+
+4 激活纹理，传递纹理值
+
+5 传递顶点坐标及其他参数
+
+6 开始绘制
 
 #### 内置滤镜
 
