@@ -600,7 +600,7 @@ NSString *const kGPUImageVertexShaderString = SHADER_STRING
  );
 ```
 
-`顶点着色器`主要工作是接收`顶点坐标`和`纹理坐标`，并将`纹理坐标`传递给`片段着色器`
+`顶点着色器`主要工作是接收`顶点坐标`和`纹理坐标`，告知系统是从哪个位置开始绘制，绘制多大；并将`纹理坐标`传递给`片段着色器`
 
 **片段着色器**
 
@@ -622,13 +622,158 @@ NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
 
 **使用着色器**
 
-这一系列的知识涉及到的`opengl`的很多知识，这里就不铺开阐述了，如果感兴趣可以查看我的另一系列的文章[LearnOpengl](https://github.com/kk07self/LearnOpenGL)
-
-
+这一系列的知识涉及到的`opengl`的很多知识，这里就不铺开阐述了，如果感兴趣可以查看我的另一系列的文章[LearnOpengl](https://github.com/kk07self/LearnOpenGL)，当然在后面介绍一些滤镜的时候会顺带介绍。
 
 #### 滤镜基类
 
+`GPUImageFilter`，这是滤镜的基类，说是滤镜的基类，一是它包含了滤镜处理的基础配置(如上文提到的`顶点着色器`、'片段着色器'以及`着色器的使用`等)；二是它虽然是一个滤镜，但是是无效果的滤镜，没有对图像进行任何处理，怎么输入就怎么输出的。下面来具体解析下：
 
+- 接收、处理、传递图像
+
+`GPUImageFilter`首先是遵循了`GPUImageInput`协议，前文有解析过，遵循了这个协议的类，实现对应的方法，就有了接收和处理图像的功能。然后是继承自`GPUImageOutput`，同样前文也有解析过，继承自它的类，就有了向下(外)传递图像的功能(添加到targets)里。
+
+```objective-c
+- (void)setInputFramebuffer:(GPUImageFramebuffer *)newInputFramebuffer atIndex:(NSInteger)textureIndex;
+{
+    firstInputFramebuffer = newInputFramebuffer;
+    [firstInputFramebuffer lock];
+}
+```
+
+在`GPUImageFilter`的实现文件里面，我们看到了上面这个方法的实现，即接收了图像的`FBO`。
+
+```objective-c
+- (void)newFrameReadyAtTime:(CMTime)frameTime atIndex:(NSInteger)textureIndex;
+```
+
+接着在`GPUImageFilter`中，也实现了这个方法，这是上一步告诉下一步可以处理图像了的调用。继续看这个方法里面的实现，我们看到调用了这个方法：
+
+```objective-c
+[self renderToTextureWithVertices:imageVertices textureCoordinates:[[self class] textureCoordinatesForRotation:inputRotation]];
+```
+
+我们进入这个方法的实现中，可以看到这里面就是通过`opengl`对图像进行的`滤镜`处理。里面如何渲染的，等到后面梳理了着色器配置后再进行解析。
+
+- 滤镜处理过程
+
+**着色器配置及解析**
+
+滤镜的初始化方法中有参数是让配置着色器的：
+
+```objective-c
+- (id)initWithVertexShaderFromString:(NSString *)vertexShaderString fragmentShaderFromString:(NSString *)fragmentShaderString;
+```
+
+这个API中，`vertexShaderString`是配置`顶点着色器`，`fragmentShaderString`配置`片段着色器`。这两个参数决定了，滤镜内部是如何绘制的。
+
+在进入到它的实现里，我们可以看到这样一段代码：
+
+```objective-c
+runSynchronouslyOnVideoProcessingQueue(^{
+        [GPUImageContext useImageProcessingContext];
+
+        // 创建滤镜程序
+        filterProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:vertexShaderString fragmentShaderString:fragmentShaderString];
+        
+        if (!filterProgram.initialized)
+        {
+            [self initializeAttributes];
+            
+            if (![filterProgram link])
+            {
+                NSString *progLog = [filterProgram programLog];
+                NSLog(@"Program link log: %@", progLog);
+                NSString *fragLog = [filterProgram fragmentShaderLog];
+                NSLog(@"Fragment shader compile log: %@", fragLog);
+                NSString *vertLog = [filterProgram vertexShaderLog];
+                NSLog(@"Vertex shader compile log: %@", vertLog);
+                filterProgram = nil;
+                NSAssert(NO, @"Filter shader link failed");
+            }
+        }
+        
+  			// 着色器中读取出 顶点坐标、纹理坐标、纹理等参数
+        filterPositionAttribute = [filterProgram attributeIndex:@"position"];
+        filterTextureCoordinateAttribute = [filterProgram attributeIndex:@"inputTextureCoordinate"];
+        filterInputTextureUniform = [filterProgram uniformIndex:@"inputImageTexture"]; // This does assume a name of "inputImageTexture" for the fragment shader
+        
+        [GPUImageContext setActiveShaderProgram:filterProgram];
+        
+  			// enable 顶点坐标
+        glEnableVertexAttribArray(filterPositionAttribute);
+        glEnableVertexAttribArray(filterTextureCoordinateAttribute);    
+    });
+```
+
+这段代码的作用大致是：
+
+1 通过`顶点着色器`和`片段着色器`创建`着色器程序`
+
+2 读取出`着色器`中需要传入的值参数，即`顶点坐标`、`纹理坐标`及`纹理`
+
+**纹理渲染**
+
+在`GPUImageFilter`这一节的前面，已经阐述了在初始化的时候通过`着色器`创建的`着色器程序`，以及`着色器`中接收`顶点坐标`、`纹理坐标`、及`纹理`的参数入口；并且接收了上一层传递下来的图像资源`FBO`，保存在了`FirstInputFrameBuffer`中；最后来到了渲染纹理的方法中了。接下来就具体解析下，纹理渲染的方法。
+
+```objective-c
+- (void)renderToTextureWithVertices:(const GLfloat *)vertices textureCoordinates:(const GLfloat *)textureCoordinates;
+{
+    if (self.preventRendering)
+    {
+        [firstInputFramebuffer unlock];
+        return;
+    }
+    // 激活着色器程序
+    [GPUImageContext setActiveShaderProgram:filterProgram];
+
+  	// 绑定激活outputFramebuffer, FBO 
+    outputFramebuffer = [[GPUImageContext sharedFramebufferCache] fetchFramebufferForSize:[self sizeOfFBO] textureOptions:self.outputTextureOptions onlyTexture:NO];
+  	// 方法里面是
+  	// glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    // glViewport(0, 0, (int)_size.width, (int)_size.height);
+    [outputFramebuffer activateFramebuffer];
+    if (usingNextFrameForImageCapture)
+    {
+        [outputFramebuffer lock];
+    }
+
+    [self setUniformsForProgramAtIndex:0];
+    
+  // 清空纹理屏上的信息
+  glClearColor(backgroundColorRed, backgroundColorGreen, backgroundColorBlue, backgroundColorAlpha);
+  glClear(GL_COLOR_BUFFER_BIT);
+
+  // 激活纹理，绑定输入的纹理
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, [firstInputFramebuffer texture]);
+	
+  // 将纹理传递给 片段着色器
+	glUniform1i(filterInputTextureUniform, 2);	
+
+  // 将顶点坐标和纹理坐标传递给顶点着色器
+  glVertexAttribPointer(filterPositionAttribute, 2, GL_FLOAT, 0, 0, vertices);
+	glVertexAttribPointer(filterTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, textureCoordinates);
+  
+  // 开始纹理渲染
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  
+  
+  [firstInputFramebuffer unlock];
+    
+    if (usingNextFrameForImageCapture)
+    {
+        dispatch_semaphore_signal(imageCaptureSemaphore);
+    }
+}
+```
+
+上面代码的注释，其实就是前文提到的`顶点着色器`、`片段着色器`如何作用到纹理到达滤镜的效果。这里再简单总结下：
+
+1 着色器(顶点、片段)创建着色器程序，读出着色器中接收信息（顶点坐标、纹理坐标、纹理）的参数
+
+2 激活着色器程序
+
+3 绑定FBO到 
 
 #### 内置滤镜
 

@@ -316,6 +316,7 @@ NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
 	
 	glUniform1i(filterInputTextureUniform, 2);	
 
+    
     glVertexAttribPointer(filterPositionAttribute, 2, GL_FLOAT, 0, 0, vertices);
 	glVertexAttribPointer(filterTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, textureCoordinates);
     

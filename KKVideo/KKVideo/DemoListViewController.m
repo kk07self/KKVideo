@@ -8,6 +8,7 @@
 
 #import "DemoListViewController.h"
 #import "SimpleCameraViewController.h"
+#import "AVPlayerViewController.h"
 
 @interface DemoListViewController ()
 
@@ -24,7 +25,7 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    _demoList = @[@"SimpleCamera"];
+    _demoList = @[@"SimpleCamera", @"TestAVAudioPlayer创建个数"];
 }
 
 #pragma mark - Table view data source
@@ -48,6 +49,9 @@
     if (indexPath.row == 0) {
         SimpleCameraViewController *simple = [[SimpleCameraViewController alloc] init];
         [self showViewController:simple sender:nil];
+    } else if (indexPath.row == 1) {
+        AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
+        [self showViewController:vc sender:nil];
     }
 }
 

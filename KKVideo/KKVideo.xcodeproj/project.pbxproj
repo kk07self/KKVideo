@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7120C5722EE93B80018C90D /* City Sunshine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5122EE93B80018C90D /* City Sunshine.mp3 */; };
+		D7120C5822EE93B80018C90D /* Rush.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5222EE93B80018C90D /* Rush.mp3 */; };
+		D7120C5922EE93B80018C90D /* Eye of Forgiveness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5322EE93B80018C90D /* Eye of Forgiveness.mp3 */; };
+		D7120C5A22EE93B80018C90D /* Lovely Piano Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5422EE93B80018C90D /* Lovely Piano Song.mp3 */; };
+		D7120C5B22EE93B80018C90D /* Motions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5522EE93B80018C90D /* Motions.mp3 */; };
+		D7120C5C22EE93B80018C90D /* Pickled Pink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5622EE93B80018C90D /* Pickled Pink.mp3 */; };
 		D728977322DC4BB500BEF620 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977222DC4BB500BEF620 /* AppDelegate.m */; };
 		D728977622DC4BB500BEF620 /* SimpleCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */; };
 		D728977922DC4BB500BEF620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D728977722DC4BB500BEF620 /* Main.storyboard */; };
@@ -14,11 +20,18 @@
 		D728977E22DC4BB600BEF620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D728977C22DC4BB600BEF620 /* LaunchScreen.storyboard */; };
 		D728978122DC4BB600BEF620 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D728978022DC4BB600BEF620 /* main.m */; };
 		D728978B22DC537B00BEF620 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D728978A22DC537B00BEF620 /* libGPUImage.a */; };
+		D7AAF90F22EE92B200AB5B93 /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AAF90E22EE92B200AB5B93 /* AVPlayerViewController.m */; };
 		D7D1A85322DD7404009DD577 /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D1A85222DD7404009DD577 /* DemoListViewController.m */; };
 		D7D1A85522DDBA0A009DD577 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D7D1A85422DDBA0A009DD577 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D7120C5122EE93B80018C90D /* City Sunshine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "City Sunshine.mp3"; sourceTree = "<group>"; };
+		D7120C5222EE93B80018C90D /* Rush.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rush.mp3; sourceTree = "<group>"; };
+		D7120C5322EE93B80018C90D /* Eye of Forgiveness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eye of Forgiveness.mp3"; sourceTree = "<group>"; };
+		D7120C5422EE93B80018C90D /* Lovely Piano Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lovely Piano Song.mp3"; sourceTree = "<group>"; };
+		D7120C5522EE93B80018C90D /* Motions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Motions.mp3; sourceTree = "<group>"; };
+		D7120C5622EE93B80018C90D /* Pickled Pink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pickled Pink.mp3"; sourceTree = "<group>"; };
 		D728976E22DC4BB500BEF620 /* KKVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D728977122DC4BB500BEF620 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D728977222DC4BB500BEF620 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -30,6 +43,8 @@
 		D728977F22DC4BB600BEF620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D728978022DC4BB600BEF620 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D728978A22DC537B00BEF620 /* libGPUImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGPUImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7AAF90D22EE92B200AB5B93 /* AVPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
+		D7AAF90E22EE92B200AB5B93 /* AVPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
 		D7D1A85122DD7404009DD577 /* DemoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
 		D7D1A85222DD7404009DD577 /* DemoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoListViewController.m; sourceTree = "<group>"; };
 		D7D1A85422DDBA0A009DD577 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
@@ -48,6 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7120C5022EE93B80018C90D /* music */ = {
+			isa = PBXGroup;
+			children = (
+				D7120C5122EE93B80018C90D /* City Sunshine.mp3 */,
+				D7120C5222EE93B80018C90D /* Rush.mp3 */,
+				D7120C5322EE93B80018C90D /* Eye of Forgiveness.mp3 */,
+				D7120C5422EE93B80018C90D /* Lovely Piano Song.mp3 */,
+				D7120C5522EE93B80018C90D /* Motions.mp3 */,
+				D7120C5622EE93B80018C90D /* Pickled Pink.mp3 */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		D728976522DC4BB500BEF620 = {
 			isa = PBXGroup;
 			children = (
@@ -70,11 +98,14 @@
 			children = (
 				D7D1A85422DDBA0A009DD577 /* README.md */,
 				D7D1A85622DDBA28009DD577 /* GPUImage源码解读.md */,
+				D7120C5022EE93B80018C90D /* music */,
 				D7D1A85022DD73A2009DD577 /* filter */,
 				D728977122DC4BB500BEF620 /* AppDelegate.h */,
 				D728977222DC4BB500BEF620 /* AppDelegate.m */,
 				D7D1A85122DD7404009DD577 /* DemoListViewController.h */,
 				D7D1A85222DD7404009DD577 /* DemoListViewController.m */,
+				D7AAF90D22EE92B200AB5B93 /* AVPlayerViewController.h */,
+				D7AAF90E22EE92B200AB5B93 /* AVPlayerViewController.m */,
 				D728977422DC4BB500BEF620 /* SimpleCameraViewController.h */,
 				D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */,
 				D728977722DC4BB500BEF620 /* Main.storyboard */,
@@ -158,8 +189,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7120C5822EE93B80018C90D /* Rush.mp3 in Resources */,
+				D7120C5B22EE93B80018C90D /* Motions.mp3 in Resources */,
+				D7120C5C22EE93B80018C90D /* Pickled Pink.mp3 in Resources */,
+				D7120C5722EE93B80018C90D /* City Sunshine.mp3 in Resources */,
 				D728977E22DC4BB600BEF620 /* LaunchScreen.storyboard in Resources */,
 				D728977B22DC4BB600BEF620 /* Assets.xcassets in Resources */,
+				D7120C5A22EE93B80018C90D /* Lovely Piano Song.mp3 in Resources */,
+				D7120C5922EE93B80018C90D /* Eye of Forgiveness.mp3 in Resources */,
 				D7D1A85522DDBA0A009DD577 /* README.md in Resources */,
 				D728977922DC4BB500BEF620 /* Main.storyboard in Resources */,
 			);
@@ -172,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AAF90F22EE92B200AB5B93 /* AVPlayerViewController.m in Sources */,
 				D728977622DC4BB500BEF620 /* SimpleCameraViewController.m in Sources */,
 				D728978122DC4BB600BEF620 /* main.m in Sources */,
 				D728977322DC4BB500BEF620 /* AppDelegate.m in Sources */,
