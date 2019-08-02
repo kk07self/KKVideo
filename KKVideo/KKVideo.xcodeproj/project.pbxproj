@@ -7,12 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D7120C5722EE93B80018C90D /* City Sunshine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5122EE93B80018C90D /* City Sunshine.mp3 */; };
-		D7120C5822EE93B80018C90D /* Rush.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5222EE93B80018C90D /* Rush.mp3 */; };
-		D7120C5922EE93B80018C90D /* Eye of Forgiveness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5322EE93B80018C90D /* Eye of Forgiveness.mp3 */; };
-		D7120C5A22EE93B80018C90D /* Lovely Piano Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5422EE93B80018C90D /* Lovely Piano Song.mp3 */; };
-		D7120C5B22EE93B80018C90D /* Motions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5522EE93B80018C90D /* Motions.mp3 */; };
-		D7120C5C22EE93B80018C90D /* Pickled Pink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7120C5622EE93B80018C90D /* Pickled Pink.mp3 */; };
+		D7280D2322F2B2D80066251E /* AudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = D7280D2122F2B2D80066251E /* AudioFile.m */; };
 		D728977322DC4BB500BEF620 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977222DC4BB500BEF620 /* AppDelegate.m */; };
 		D728977622DC4BB500BEF620 /* SimpleCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */; };
 		D728977922DC4BB500BEF620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D728977722DC4BB500BEF620 /* Main.storyboard */; };
@@ -20,18 +15,26 @@
 		D728977E22DC4BB600BEF620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D728977C22DC4BB600BEF620 /* LaunchScreen.storyboard */; };
 		D728978122DC4BB600BEF620 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D728978022DC4BB600BEF620 /* main.m */; };
 		D728978B22DC537B00BEF620 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D728978A22DC537B00BEF620 /* libGPUImage.a */; };
+		D72A774C22F40D77006DB467 /* video-03.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774222F40D75006DB467 /* video-03.mp4 */; };
+		D72A774D22F40D77006DB467 /* video-06.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774322F40D75006DB467 /* video-06.mp4 */; };
+		D72A774E22F40D77006DB467 /* video-01.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774422F40D75006DB467 /* video-01.mp4 */; };
+		D72A774F22F40D77006DB467 /* video-09.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774522F40D75006DB467 /* video-09.mp4 */; };
+		D72A775022F40D77006DB467 /* video-00.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774622F40D76006DB467 /* video-00.mp4 */; };
+		D72A775122F40D77006DB467 /* video-07.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774722F40D76006DB467 /* video-07.mp4 */; };
+		D72A775222F40D77006DB467 /* video-02.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774822F40D76006DB467 /* video-02.mp4 */; };
+		D72A775322F40D77006DB467 /* video-04.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774922F40D76006DB467 /* video-04.mp4 */; };
+		D72A775422F40D77006DB467 /* video-08.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774A22F40D76006DB467 /* video-08.mp4 */; };
+		D72A775522F40D77006DB467 /* video-05.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D72A774B22F40D77006DB467 /* video-05.mp4 */; };
+		D72A775722F41659006DB467 /* files.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72A775622F41659006DB467 /* files.txt */; };
+		D72A775A22F431B8006DB467 /* RecordMovieWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D72A775922F431B8006DB467 /* RecordMovieWriter.m */; };
 		D7AAF90F22EE92B200AB5B93 /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AAF90E22EE92B200AB5B93 /* AVPlayerViewController.m */; };
 		D7D1A85322DD7404009DD577 /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D1A85222DD7404009DD577 /* DemoListViewController.m */; };
 		D7D1A85522DDBA0A009DD577 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D7D1A85422DDBA0A009DD577 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D7120C5122EE93B80018C90D /* City Sunshine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "City Sunshine.mp3"; sourceTree = "<group>"; };
-		D7120C5222EE93B80018C90D /* Rush.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rush.mp3; sourceTree = "<group>"; };
-		D7120C5322EE93B80018C90D /* Eye of Forgiveness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eye of Forgiveness.mp3"; sourceTree = "<group>"; };
-		D7120C5422EE93B80018C90D /* Lovely Piano Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lovely Piano Song.mp3"; sourceTree = "<group>"; };
-		D7120C5522EE93B80018C90D /* Motions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Motions.mp3; sourceTree = "<group>"; };
-		D7120C5622EE93B80018C90D /* Pickled Pink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pickled Pink.mp3"; sourceTree = "<group>"; };
+		D7280D2122F2B2D80066251E /* AudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFile.m; sourceTree = "<group>"; };
+		D7280D2222F2B2D80066251E /* AudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFile.h; sourceTree = "<group>"; };
 		D728976E22DC4BB500BEF620 /* KKVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D728977122DC4BB500BEF620 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D728977222DC4BB500BEF620 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -43,6 +46,19 @@
 		D728977F22DC4BB600BEF620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D728978022DC4BB600BEF620 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D728978A22DC537B00BEF620 /* libGPUImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGPUImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D72A774222F40D75006DB467 /* video-03.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-03.mp4"; sourceTree = "<group>"; };
+		D72A774322F40D75006DB467 /* video-06.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-06.mp4"; sourceTree = "<group>"; };
+		D72A774422F40D75006DB467 /* video-01.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-01.mp4"; sourceTree = "<group>"; };
+		D72A774522F40D75006DB467 /* video-09.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-09.mp4"; sourceTree = "<group>"; };
+		D72A774622F40D76006DB467 /* video-00.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-00.mp4"; sourceTree = "<group>"; };
+		D72A774722F40D76006DB467 /* video-07.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-07.mp4"; sourceTree = "<group>"; };
+		D72A774822F40D76006DB467 /* video-02.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-02.mp4"; sourceTree = "<group>"; };
+		D72A774922F40D76006DB467 /* video-04.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-04.mp4"; sourceTree = "<group>"; };
+		D72A774A22F40D76006DB467 /* video-08.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-08.mp4"; sourceTree = "<group>"; };
+		D72A774B22F40D77006DB467 /* video-05.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-05.mp4"; sourceTree = "<group>"; };
+		D72A775622F41659006DB467 /* files.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = files.txt; sourceTree = "<group>"; };
+		D72A775822F431B8006DB467 /* RecordMovieWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordMovieWriter.h; sourceTree = "<group>"; };
+		D72A775922F431B8006DB467 /* RecordMovieWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordMovieWriter.m; sourceTree = "<group>"; };
 		D7AAF90D22EE92B200AB5B93 /* AVPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
 		D7AAF90E22EE92B200AB5B93 /* AVPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
 		D7D1A85122DD7404009DD577 /* DemoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
@@ -63,17 +79,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D7120C5022EE93B80018C90D /* music */ = {
+		D7280D2022F2B2D80066251E /* AudioFile */ = {
 			isa = PBXGroup;
 			children = (
-				D7120C5122EE93B80018C90D /* City Sunshine.mp3 */,
-				D7120C5222EE93B80018C90D /* Rush.mp3 */,
-				D7120C5322EE93B80018C90D /* Eye of Forgiveness.mp3 */,
-				D7120C5422EE93B80018C90D /* Lovely Piano Song.mp3 */,
-				D7120C5522EE93B80018C90D /* Motions.mp3 */,
-				D7120C5622EE93B80018C90D /* Pickled Pink.mp3 */,
+				D7280D2222F2B2D80066251E /* AudioFile.h */,
+				D7280D2122F2B2D80066251E /* AudioFile.m */,
 			);
-			path = music;
+			path = AudioFile;
 			sourceTree = "<group>";
 		};
 		D728976522DC4BB500BEF620 = {
@@ -98,7 +110,17 @@
 			children = (
 				D7D1A85422DDBA0A009DD577 /* README.md */,
 				D7D1A85622DDBA28009DD577 /* GPUImage源码解读.md */,
-				D7120C5022EE93B80018C90D /* music */,
+				D72A774622F40D76006DB467 /* video-00.mp4 */,
+				D72A774422F40D75006DB467 /* video-01.mp4 */,
+				D72A774822F40D76006DB467 /* video-02.mp4 */,
+				D72A774222F40D75006DB467 /* video-03.mp4 */,
+				D72A774922F40D76006DB467 /* video-04.mp4 */,
+				D72A774B22F40D77006DB467 /* video-05.mp4 */,
+				D72A774322F40D75006DB467 /* video-06.mp4 */,
+				D72A774722F40D76006DB467 /* video-07.mp4 */,
+				D72A774A22F40D76006DB467 /* video-08.mp4 */,
+				D72A774522F40D75006DB467 /* video-09.mp4 */,
+				D72A775622F41659006DB467 /* files.txt */,
 				D7D1A85022DD73A2009DD577 /* filter */,
 				D728977122DC4BB500BEF620 /* AppDelegate.h */,
 				D728977222DC4BB500BEF620 /* AppDelegate.m */,
@@ -108,7 +130,10 @@
 				D7AAF90E22EE92B200AB5B93 /* AVPlayerViewController.m */,
 				D728977422DC4BB500BEF620 /* SimpleCameraViewController.h */,
 				D728977522DC4BB500BEF620 /* SimpleCameraViewController.m */,
+				D72A775822F431B8006DB467 /* RecordMovieWriter.h */,
+				D72A775922F431B8006DB467 /* RecordMovieWriter.m */,
 				D728977722DC4BB500BEF620 /* Main.storyboard */,
+				D7280D2022F2B2D80066251E /* AudioFile */,
 				D728977A22DC4BB600BEF620 /* Assets.xcassets */,
 				D728977C22DC4BB600BEF620 /* LaunchScreen.storyboard */,
 				D728977F22DC4BB600BEF620 /* Info.plist */,
@@ -163,6 +188,11 @@
 				TargetAttributes = {
 					D728976D22DC4BB500BEF620 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -189,15 +219,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7120C5822EE93B80018C90D /* Rush.mp3 in Resources */,
-				D7120C5B22EE93B80018C90D /* Motions.mp3 in Resources */,
-				D7120C5C22EE93B80018C90D /* Pickled Pink.mp3 in Resources */,
-				D7120C5722EE93B80018C90D /* City Sunshine.mp3 in Resources */,
+				D72A775122F40D77006DB467 /* video-07.mp4 in Resources */,
+				D72A774F22F40D77006DB467 /* video-09.mp4 in Resources */,
+				D72A774E22F40D77006DB467 /* video-01.mp4 in Resources */,
+				D72A775722F41659006DB467 /* files.txt in Resources */,
+				D72A774C22F40D77006DB467 /* video-03.mp4 in Resources */,
+				D72A775222F40D77006DB467 /* video-02.mp4 in Resources */,
+				D72A774D22F40D77006DB467 /* video-06.mp4 in Resources */,
+				D72A775022F40D77006DB467 /* video-00.mp4 in Resources */,
+				D72A775322F40D77006DB467 /* video-04.mp4 in Resources */,
+				D72A775422F40D77006DB467 /* video-08.mp4 in Resources */,
 				D728977E22DC4BB600BEF620 /* LaunchScreen.storyboard in Resources */,
 				D728977B22DC4BB600BEF620 /* Assets.xcassets in Resources */,
-				D7120C5A22EE93B80018C90D /* Lovely Piano Song.mp3 in Resources */,
-				D7120C5922EE93B80018C90D /* Eye of Forgiveness.mp3 in Resources */,
 				D7D1A85522DDBA0A009DD577 /* README.md in Resources */,
+				D72A775522F40D77006DB467 /* video-05.mp4 in Resources */,
 				D728977922DC4BB500BEF620 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,10 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7280D2322F2B2D80066251E /* AudioFile.m in Sources */,
 				D7AAF90F22EE92B200AB5B93 /* AVPlayerViewController.m in Sources */,
 				D728977622DC4BB500BEF620 /* SimpleCameraViewController.m in Sources */,
 				D728978122DC4BB600BEF620 /* main.m in Sources */,
 				D728977322DC4BB500BEF620 /* AppDelegate.m in Sources */,
+				D72A775A22F431B8006DB467 /* RecordMovieWriter.m in Sources */,
 				D7D1A85322DD7404009DD577 /* DemoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
